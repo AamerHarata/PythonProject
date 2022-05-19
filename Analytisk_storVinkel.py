@@ -21,7 +21,6 @@ m = 0.034
 b = 0.0042
 w_p = math.sqrt(k / m - b ** 2 / (4 * m ** 2))
 #w_p = math.sqrt(9.81/0.85)
-print(w_p)
 A = 0.448+0.039
 
 calc_x = []
@@ -41,5 +40,13 @@ ax.set_xlim((0, max(data_t)))
 ax.set_ylim((-2, 2))
 
 plt.plot(data_t, calc_x)
-plt.plot(data_t, data_x)
-plt.show()
+# plt.plot(data_t, data_x)
+# plt.show()
+
+
+def get_data_t():
+    return data_t
+
+
+def get_data_x():
+    return calc_x

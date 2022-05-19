@@ -4,7 +4,6 @@ import numpy as np
 import Functions as f
 import pandas as pd
 
-
 g = 9.81
 
 data = pd.read_csv('storvinkel.csv', delimiter='\t')
@@ -18,36 +17,35 @@ data_angle = f.calculate_angle_deg(data_x)
 
 v0 = 0
 x0 = data_x[0]
-a0 = g*math.sin(data_angle[0])
+a0 = g * math.sin(data_angle[0])
 
-a1 = g*math.sin(data_angle[1])
+a1 = g * math.sin(data_angle[1])
 
-v1 = v0 + a1*(data_t[1] - data_t[0])
-x1 = x0 + v1*(data_t[1] - data_t[0])
-#a = np.zeros(len(data_angle))
-a = [g*math.sin(math.radians(data_angle[0]))]
+v1 = v0 + a1 * (data_t[1] - data_t[0])
+x1 = x0 + v1 * (data_t[1] - data_t[0])
+# a = np.zeros(len(data_angle))
+a = [g * math.sin(math.radians(data_angle[0]))]
 v = [0]
-x = [data_x[0]]
+calc_x = [data_x[0]]
 k = 0.005
 m = 0.034
 l = 0.825
 
 for i in range(1, len(data_angle)):
-    d_time = data_t[i] - data_t[i-1]
-    #a_n = g * math.sin(math.radians(data_angle[i]))
-    a_n = -g/l * x[i-1] - k / m * v[i-1]
+    d_time = data_t[i] - data_t[i - 1]
+    # a_n = g * math.sin(math.radians(data_angle[i]))
+    a_n = -g / l * calc_x[i - 1] - k / m * v[i - 1]
     a.append(a_n)
 
-    v_n = v[i-1] + a[i]*d_time
+    v_n = v[i - 1] + a[i] * d_time
     v.append(v_n)
 
-    x_n = x[i-1] + v[i] * d_time
-    x.append(x_n)
-
+    x_n = calc_x[i - 1] + v[i] * d_time
+    calc_x.append(x_n)
 
 # for i in range(len(v)):
 #     print(f"angle: {data_angle[i]}, x: {x[i]}")
-    #print(v[i])
+# print(v[i])
 
 
 ax = plt.axes()
@@ -62,8 +60,18 @@ ax.set_xlim((0, max(data_t)))
 ax.set_ylim((-1, 1))
 
 # Euler method plot
-plt.plot(data_t, x)
+plt.plot(data_t, calc_x)
 data_x -= np.average(data_x)
+
+
 # Analytisk method plot
 
-plt.show()
+# plt.show()
+
+
+def get_data_t():
+    return data_t
+
+
+def get_data_x():
+    return calc_x
