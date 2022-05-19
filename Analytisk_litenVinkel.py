@@ -16,26 +16,34 @@ k = 0.408
 m = 0.034
 b = 0.003
 w_p = math.sqrt(k / m - b ** 2 / (4 * m ** 2))
-#w_p = math.sqrt(9.81/0.85)
+# w_p = math.sqrt(9.81/0.85)
 print(w_p)
-A = -0.25+0.04
+A = -0.25 + 0.04
 
 calc_x = []
 
 for t in data_t:
-    x = A * math.exp(-b / (2 * m) * t) * math.cos(w_p * t + 0)-0.02
+    x = A * math.exp(-b / (2 * m) * t) * math.cos(w_p * t + 0) - 0.02
     calc_x.append(x)
 
-ax = plt.axes()
-plt.axhline(0, color='black')
-plt.axvline(0, color='red')
 
-plt.text(0, max(data_angle) + 5, 'x', rotation=0)
-plt.text(8.2, -17.5, 't / sec', rotation=0)
+# ax = plt.axes()
+# plt.axhline(0, color='black')
+# plt.axvline(0, color='red')
+#
+# plt.text(0, max(data_angle) + 5, 'x', rotation=0)
+# plt.text(8.2, -17.5, 't / sec', rotation=0)
+#
+# ax.set_xlim((0, max(data_t)))
+# ax.set_ylim((-2, 2))
+#
+# plt.plot(data_t, calc_x)
+# plt.plot(data_t, data_x)
+# plt.show()
 
-ax.set_xlim((0, max(data_t)))
-ax.set_ylim((-2, 2))
+def get_data_t():
+    return data_t
 
-plt.plot(data_t, calc_x)
-plt.plot(data_t, data_x)
-plt.show()
+
+def get_data_x():
+    return calc_x

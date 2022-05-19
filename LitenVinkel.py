@@ -1,9 +1,9 @@
 import numpy as np
 from matplotlib import pyplot as plt
 
-import Euler_storVinkel as Euler
-import Analytisk_storVinkel as Anal
-import Observasjon_storVinkel as Observ
+import Euler_litenVinkel as Euler
+import Analytisk_litenVinkel as Anal
+import Observasjon_litenVinkel as Observ
 
 euler_t = Euler.get_data_t()
 euler_x = Euler.get_data_x()
@@ -20,7 +20,7 @@ plt.axvline(0, color='red')
 
 ax.set_xlim((0, max(euler_t)))
 ax.set_ylim((-1, 1))
-ax.set_title("Stor Vinkel")
+ax.set_title("Liten Vinkel")
 euler_x -= np.average(euler_x)
 analytisk_x -= np.average(analytisk_x)
 observ_x -= np.average(observ_x)
@@ -29,5 +29,4 @@ plt.plot(euler_t, euler_x, label="Euler")
 plt.plot(observ_t, observ_x, label="Observasjon")
 plt.plot(analytisk_t, analytisk_x, label="Analytisk")
 plt.legend(loc="upper left")
-
 plt.show()

@@ -29,17 +29,17 @@ for t in data_t:
     x = A * math.exp(-b / (2 * m) * t) * math.cos(w_p * t - 0.76) - 0.022
     calc_x.append(x)
 
-ax = plt.axes()
-plt.axhline(0, color='black')
-plt.axvline(0, color='red')
+# ax = plt.axes()
+# plt.axhline(0, color='black')
+# plt.axvline(0, color='red')
+#
+# plt.text(0, max(data_angle) + 5, 'x', rotation=0)
+# plt.text(8.2, -17.5, 't / sec', rotation=0)
 
-plt.text(0, max(data_angle) + 5, 'x', rotation=0)
-plt.text(8.2, -17.5, 't / sec', rotation=0)
+# ax.set_xlim((0, max(data_t)))
+# ax.set_ylim((-2, 2))
 
-ax.set_xlim((0, max(data_t)))
-ax.set_ylim((-2, 2))
-
-plt.plot(data_t, calc_x)
+# plt.plot(data_t, calc_x)
 # plt.plot(data_t, data_x)
 # plt.show()
 
