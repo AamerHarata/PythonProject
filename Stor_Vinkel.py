@@ -29,5 +29,6 @@ plt.plot(euler_t, euler_x, label="Euler")
 plt.plot(observ_t, observ_x, label="Observasjon")
 plt.plot(analytisk_t, analytisk_x, label="Analytisk")
 plt.legend(loc="upper left")
-
+plt.savefig("Storvinkel.png")
 plt.show()
+
